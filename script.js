@@ -8,6 +8,14 @@ const updateScreen =(number)=>{
     calculatorScreen.value=number;
 };
 
+const coronafree=document.querySelectorAll(".Corona-free");
+
+coronafree.forEach((choice)=>{
+    choice.addEventListener("click",(event)=>{
+        updateScreen(event.target.value);
+    })
+})
+
 const clearbtn=document.querySelector(".all-clear");
 
 clearbtn.addEventListener("click",(event)=>{
@@ -49,7 +57,9 @@ operators.forEach((operator)=>{
 });
 
 const inputNumber=(number)=>{
-    if(currentInput === '0'){
+    if(currentInput === '0' && number === '.'){
+        currentInput='0.';
+    }else if(currentInput === '0'){
         currentInput=number;
     }else{
         currentInput+=number;
